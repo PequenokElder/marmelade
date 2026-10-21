@@ -42,3 +42,7 @@ That builds the app, ad-hoc signs it, and copies it to `/Applications/Marmalade.
 - Strong grades on 8-bit JPEGs can show banding in smooth gradients; the dither option helps.
 - LUTs designed for log footage (S-Log, V-Log and similar) will look wrong on flat JPEGs. Display-referred "look" LUTs work best.
 - Only 3D `.cube` LUTs are supported.
+
+## License
+
+[MIT](LICENSE)
