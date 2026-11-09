@@ -16,6 +16,7 @@ Built with SwiftUI and Core Image. No Xcode project, no third-party dependencies
 - **RAW:** developed with Apple's RAW engine, with white balance, true exposure, tone boost, shadows and sharpness.
 - **Per-photo exposure and white balance** on top of the global look.
 - **Output color:** match source, sRGB or Display P3.
+- **Montage:** turn your graded photos into a vertical 9:16 MP4 (1080×1920). Frames hold 2, 3 or 4 photos, chosen automatically from each photo's shape, with crops that follow faces and the main subject (Apple's on-device Vision framework). Set a **BPM** (type it, tap it, or detect it from a music track) and cuts land on the beat, with cut, fade or push transitions and optional music in the video.
 
 ## Requirements
 
@@ -42,6 +43,7 @@ That builds the app, ad-hoc signs it, and copies it to `/Applications/Marmalade.
 - Strong grades on 8-bit JPEGs can show banding in smooth gradients; the dither option helps.
 - LUTs designed for log footage (S-Log, V-Log and similar) will look wrong on flat JPEGs. Display-referred "look" LUTs work best.
 - Only 3D `.cube` LUTs are supported.
+- Tempo detection is best-effort: it's accurate on steady, percussive music and can land on half- or double-time, so the Montage window has Tap, ½× and 2× to correct it by ear.
 
 ## License
 

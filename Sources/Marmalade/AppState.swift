@@ -35,6 +35,10 @@ final class AppState: ObservableObject {
     @Published var outputSpace = OutputSpace.matchSource { didSet { refresh() } }
     @Published var selectedIsRAW = false
 
+    // Montage
+    @Published var showMontage = false
+    let montage = MontageModel()
+
     // Output
     @Published var preview: NSImage?
     @Published var jpegQuality = 0.95
@@ -169,6 +173,13 @@ final class AppState: ObservableObject {
     func remove(_ ids: Set<Photo.ID>) {
         photos.removeAll { ids.contains($0.id) }
         if let id = selectedID, ids.contains(id) { selectedID = photos.first?.id }
+    }
+
+    func openMontage() {
+        guard photos.count >= 2 else { return }
+        montage.open(photos: photos.map { PhotoInput(url: $0.url, fix: $0.fix, name: $0.name) },
+                     look: currentLook, raw: rawSettings)
+        showMontage = true
     }
 
     func moveSelection(_ delta: Int) {

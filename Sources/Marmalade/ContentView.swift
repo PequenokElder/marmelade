@@ -26,6 +26,9 @@ struct ContentView: View {
         .preferredColorScheme(.dark)
         .tint(Theme.orange)
         .frame(minWidth: 1080, minHeight: 720)
+        .sheet(isPresented: $app.showMontage) {
+            MontageView(model: app.montage).environmentObject(app)
+        }
         .onDrop(of: [.fileURL], isTargeted: dropTargeted) { providers in
             app.handleDrop(providers)
             return true
@@ -74,6 +77,9 @@ struct PhotoListView: View {
 
             HStack {
                 Button("Add…") { app.addPhotosPanel() }
+                Button("Montage…") { app.openMontage() }
+                    .disabled(app.photos.count < 2)
+                    .help("Build a vertical video from your photos")
                 Spacer()
                 Text("\(app.photos.count) photo\(app.photos.count == 1 ? "" : "s")")
                     .font(.caption).foregroundStyle(.secondary)

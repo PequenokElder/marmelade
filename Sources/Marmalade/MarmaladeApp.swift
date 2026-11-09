@@ -16,6 +16,9 @@ struct MarmaladeApp: App {
                     .keyboardShortcut("o")
                 Button("Add LUT…") { app.addLUTPanel() }
                     .keyboardShortcut("l", modifiers: [.command, .shift])
+                Button("Montage…") { app.openMontage() }
+                    .keyboardShortcut("m", modifiers: [.command, .shift])
+                    .disabled(app.photos.count < 2)
                 Button("Export…") { app.exportAll() }
                     .keyboardShortcut("e")
                     .disabled(app.photos.isEmpty || app.isExporting)
